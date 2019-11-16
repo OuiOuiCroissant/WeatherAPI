@@ -10,7 +10,8 @@ require('dotenv').config()
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/public/css', express.static(__dirname));
+app.use(express.static(path.join(__dirname)));
+
 app.set('view engine', 'ejs');
 
 const content = JSON.parse(fs.readFileSync('city_list.json'));
