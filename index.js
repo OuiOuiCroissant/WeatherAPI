@@ -3,16 +3,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const fs = require('fs');
-const path = require('path');
+//const path = require('path');
 const city_list = require('./city_list.json');
 require('dotenv').config()
 
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
-//app.use(express.static(path.join(__dirname)));
 app.use('/public', express.static(__dirname));
-//app.use('/public/css', express.static(__dirname));
 app.set('view engine', 'ejs');
 
 const content = JSON.parse(fs.readFileSync('city_list.json'));
