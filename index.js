@@ -8,7 +8,6 @@ require('dotenv').config()
 
 const app = express();
 
-app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
@@ -54,6 +53,8 @@ app.get('/', function (req, res) {
     sunset: sunset
   });
 });
+
+app.use(express.static('public'));
 
 app.post('/country', function (req, res) {
   res.redirect('/');
