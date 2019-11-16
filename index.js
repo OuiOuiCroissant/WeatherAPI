@@ -94,9 +94,8 @@ app.post('/city', function (req, res) {
       wind_speed = `${weather.wind.speed}m/s`;
       sunrise = getSunriseSunsetTime(weather.sys.sunrise);
       sunset = getSunriseSunsetTime(weather.sys.sunset);
-      console.log(temperature);
-      res.redirect('/');
     }
+    res.redirect('/');
   });
 });
 
