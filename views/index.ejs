@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="city_list.json"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="req">
+        <h1>Current Weather</h1>
+          <form name="postCountryField" method="post" action="/country">
+            <label for="country"><p>Select country</p></label>
+            <select id="country" name="country" onchange="this.form.submit()">
+              <% countries.forEach((item) => { %>
+                <option value="<%= item %>"><%= item %></option>
+              <% }); %>
+            </select>
+          </form>
+          <br>
+          <form name="postCityField" method="post" action="/city">
+            <label for="city"><p>Select city</p></label>
+            <select id="city" name="city" onchange="this.form.submit()">
+              <% cities.forEach((item) => { %>
+                <option value="<%= item %>"><%= item %></option>
+              <% }); %>
+            </select>
+          </form>
+        <br>
+        <!--<input type="button" value="Submit" id="getWeather" onclick="">-->
+      </div>
+      <div class="res">
+        <img src="https://openweathermap.org/img/wn/<%= icon %>@2x.png" id="icon" name="icon" alt="">
+        <ul id="weather" name="weather">
+          <li>Cloudiness: <i name="cloudiness"><%= cloudiness %></i></li>
+          <li>Temperature: <i name="temperature"><%= temperature %></i></li>
+          <li>Humidity: <i name="humidity"><%= humidity %></i></li>
+          <li>Wind speed: <i name="wind_speed"><%= wind_speed %></i></li>
+          <li>Sunrise: <i name="sunrise"><%= sunrise %></i></li>
+          <li>Sunset: <i name="sunset"><%= sunset %></i></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
