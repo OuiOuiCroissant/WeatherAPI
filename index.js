@@ -3,12 +3,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const fs = require('fs');
+const path = require('path');
 const city_list = require('./city_list.json');
 require('dotenv').config()
 
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/public/css'));
 app.set('view engine', 'ejs');
 
 const content = JSON.parse(fs.readFileSync('city_list.json'));
@@ -54,7 +56,6 @@ app.get('/', function (req, res) {
   });
 });
 
-app.use(express.static(__dirname + '/public'));
 
 app.post('/country', function (req, res) {
   res.redirect('/');
